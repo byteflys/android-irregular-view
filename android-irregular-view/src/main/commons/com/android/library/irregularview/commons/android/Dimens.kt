@@ -1,9 +1,9 @@
-package com.android.library.roundimage.commons.android
+package com.android.library.irregularview.commons.android
 
 import android.content.Context
 import android.view.View
 
-object Dimens {
+internal object Dimens {
 
     fun Context.dp2Px(dp: Number): Float {
         val scale = resources.displayMetrics.density

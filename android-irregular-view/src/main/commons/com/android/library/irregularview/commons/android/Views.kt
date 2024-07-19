@@ -1,4 +1,4 @@
-package com.android.library.roundimage.commons.android
+package com.android.library.irregularview.commons.android
 
 import android.graphics.Rect
 import android.view.View

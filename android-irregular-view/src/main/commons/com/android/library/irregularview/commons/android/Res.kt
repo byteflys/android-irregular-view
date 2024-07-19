@@ -1,9 +1,9 @@
-package com.android.library.roundimage.commons.android
+package com.android.library.irregularview.commons.android
 
 import android.content.Context
 import android.view.View
 
-object Res {
+internal object Res {
 
     fun Context.color(colorResId: Int) = resources.getColor(colorResId, null)
 

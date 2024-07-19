@@ -35,7 +35,7 @@ api("io.github.hellogoogle2000:android-irregular-view:1.0.1")
         android:id="@+id/irregularView"
         android:layout_width="250dp"
         android:layout_height="200dp"
-        app:foregroundShape="Path" />
+        app:foregroundOutline="Path" />
 </LinearLayout>
 ```
 

@@ -1,4 +1,4 @@
-package com.android.library.roundimage.commons.kotlin
+package com.android.library.irregularview.commons.kotlin
 
 internal object Maths {
 

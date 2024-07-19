@@ -1,21 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <attr name="cornerRadius" format="dimension|reference" />
-    <attr name="topLeftRadius" format="dimension|reference" />
-    <attr name="topRightRadius" format="dimension|reference" />
-    <attr name="bottomRightRadius" format="dimension|reference" />
-    <attr name="bottomLeftRadius" format="dimension|reference" />
-    <attr name="showBorder" format="boolean" />
-    <attr name="borderColor" format="color|reference" />
-    <attr name="borderWidth" format="dimension|reference" />
-    <declare-styleable name="RoundImageView">
-        <attr name="cornerRadius" />
-        <attr name="topLeftRadius" />
-        <attr name="topRightRadius" />
-        <attr name="bottomRightRadius" />
-        <attr name="bottomLeftRadius" />
-        <attr name="showBorder" />
-        <attr name="borderColor" />
-        <attr name="borderWidth" />
+    <attr name="foregroundOutline" format="enum">
+        <enum name="Path" value="Path" />
+        <enum name="RoundRect" value="RoundRect" />
+    </attr>
+    <attr name="backgroundOutline" format="enum">
+        <enum name="Path" value="Path" />
+        <enum name="RoundRect" value="RoundRect" />
+    </attr>
+    <attr name="foregroundPathData" format="string|reference" />
+    <attr name="foregroundCornerRadius" format="fraction|reference" />
+    <attr name="foregroundTopLeftRadius" format="fraction|reference" />
+    <attr name="foregroundTopRightRadius" format="fraction|reference" />
+    <attr name="foregroundBottomRightRadius" format="fraction|reference" />
+    <attr name="foregroundBottomLeftRadius" format="fraction|reference" />
+    <attr name="foregroundBorderColor" format="color|reference" />
+    <attr name="foregroundBorderWidth" format="dimension|reference" />
+    <attr name="backgroundPathData" format="string|reference" />
+    <attr name="backgroundCornerRadius" format="fraction|reference" />
+    <attr name="backgroundTopLeftRadius" format="fraction|reference" />
+    <attr name="backgroundTopRightRadius" format="fraction|reference" />
+    <attr name="backgroundBottomRightRadius" format="fraction|reference" />
+    <attr name="backgroundBottomLeftRadius" format="fraction|reference" />
+    <attr name="backgroundBorderColor" format="color|reference" />
+    <attr name="backgroundBorderWidth" format="dimension|reference" />
+    <declare-styleable name="IrregularView">
+        <attr name="foregroundOutline" />
+        <attr name="backgroundOutline" />
+        <attr name="foregroundPathData" />
+        <attr name="foregroundCornerRadius" />
+        <attr name="foregroundTopLeftRadius" />
+        <attr name="foregroundTopRightRadius" />
+        <attr name="foregroundBottomRightRadius" />
+        <attr name="foregroundBottomLeftRadius" />
+        <attr name="foregroundBorderColor" />
+        <attr name="foregroundBorderWidth" />
+        <attr name="backgroundPathData" />
+        <attr name="backgroundCornerRadius" />
+        <attr name="backgroundTopLeftRadius" />
+        <attr name="backgroundTopRightRadius" />
+        <attr name="backgroundBottomRightRadius" />
+        <attr name="backgroundBottomLeftRadius" />
+        <attr name="backgroundBorderColor" />
+        <attr name="backgroundBorderWidth" />
     </declare-styleable>
 </resources>

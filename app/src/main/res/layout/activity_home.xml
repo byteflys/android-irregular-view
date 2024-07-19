@@ -8,14 +8,10 @@
     android:gravity="center"
     android:orientation="vertical">
 
-    <com.android.library.roundimage.RoundImageView
-        android:id="@+id/roundImageView"
-        android:layout_width="200dp"
+    <com.android.library.irregularview.IrregularView
+        android:id="@+id/irregularView"
+        android:layout_width="250dp"
         android:layout_height="200dp"
-        android:src="@drawable/ic"
-        app:borderColor="@color/blue"
-        app:borderWidth="2dp"
-        app:showBorder="true"
-        app:topLeftRadius="30dp"
-        app:topRightRadius="30dp" />
+        app:foregroundOutline="Path"
+        app:foregroundPathData="M 0 0 L 100 0 L 100 80 T 0 80 Z" />
 </LinearLayout>

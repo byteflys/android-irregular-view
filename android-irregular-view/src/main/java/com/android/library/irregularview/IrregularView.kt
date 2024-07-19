@@ -1,19 +1,18 @@
-package com.android.library.roundimage
+package com.android.library.irregularview
 
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.Path
-import android.graphics.PorterDuff
-import android.graphics.PorterDuffXfermode
 import android.graphics.RectF
 import android.util.AttributeSet
-import android.widget.ImageView
-import com.android.library.roundimage.commons.android.Dimens.dp2Px
+import android.view.View
+import com.android.library.irregularview.commons.android.Dimens.dp2Px
 
-// ImageView that support round corners
-class RoundImageView : ImageView {
+// An android view that enable
+// clip foreground and background into irregular shape
+class IrregularView : View {
 
     private var cornerRadius = 0f
     private var topLeftRadius = 0f
