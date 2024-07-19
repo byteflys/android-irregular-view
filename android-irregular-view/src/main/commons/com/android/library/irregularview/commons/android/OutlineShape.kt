@@ -2,6 +2,7 @@ package com.android.library.irregularview.commons.android
 
 internal object OutlineShape {
 
+    const val None = "None"
     const val Path = "Path"
     const val Rectangle = "Rectangle"
     const val Circle = "Circle"

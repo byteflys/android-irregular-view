@@ -16,3 +16,6 @@ android {
         getByName("main").java.srcDirs("src/main/commons")
     }
 }
+dependencies {
+    api("androidx.core:core:1.13.1")
+}

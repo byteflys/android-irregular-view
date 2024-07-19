@@ -2,30 +2,28 @@ package com.android.library.irregularview
 
 import android.content.Context
 import android.graphics.Canvas
-import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.Path
+import android.graphics.PathMeasure
 import android.graphics.RectF
 import android.util.AttributeSet
 import android.view.View
-import com.android.library.irregularview.commons.android.Dimens.dp2Px
+import androidx.core.graphics.PathParser
+import com.android.library.irregularview.commons.android.OutlineShape
+import com.android.library.irregularview.commons.android.Paths.bound
+import com.android.library.irregularview.commons.kotlin.Strings.withDefault
+import com.android.library.roundimage.R
+import kotlin.math.min
 
 // An android view that enable
 // clip foreground and background into irregular shape
 class IrregularView : View {
 
-    private var cornerRadius = 0f
-    private var topLeftRadius = 0f
-    private var topRightRadius = 0f
-    private var bottomLeftRadius = 0f
-    private var bottomRightRadius = 0f
+    private var foregroundOutline = OutlineShape.None
+    private var foregroundPathData = "M 0 0 L 100 0 L 100 100 L 0 100 Z"
 
-    private var showBorder = false
-    private var borderColor = Color.BLACK
-    private var borderWidth = dp2Px(1)
-
-    private val roundRectPaint = Paint()
-    private val borderPaint = Paint()
+    private val foregroundOutlinePaint = Paint()
+    private val foregroundBorderPaint = Paint()
 
     constructor(context: Context) : this(context, null)
     constructor(context: Context, attributeSet: AttributeSet?) : this(context, attributeSet, 0)
@@ -36,38 +34,16 @@ class IrregularView : View {
     }
 
     private fun parseAttribute(attributeSet: AttributeSet?) {
-        val typedArray = context.obtainStyledAttributes(attributeSet, R.styleable.RoundImageView)
-        cornerRadius = typedArray.getDimension(R.styleable.RoundImageView_cornerRadius, cornerRadius)
-        topLeftRadius = cornerRadius
-        topRightRadius = cornerRadius
-        bottomRightRadius = cornerRadius
-        bottomLeftRadius = cornerRadius
-        showBorder = typedArray.getBoolean(R.styleable.RoundImageView_showBorder, showBorder)
-        borderColor = typedArray.getColor(R.styleable.RoundImageView_borderColor, borderColor)
-        borderWidth = typedArray.getDimension(R.styleable.RoundImageView_borderWidth, borderWidth)
-        if (typedArray.hasValue(R.styleable.RoundImageView_topLeftRadius)) {
-            topLeftRadius = typedArray.getDimension(R.styleable.RoundImageView_topLeftRadius, topLeftRadius)
-        }
-        if (typedArray.hasValue(R.styleable.RoundImageView_topRightRadius)) {
-            topRightRadius = typedArray.getDimension(R.styleable.RoundImageView_topRightRadius, topRightRadius)
-        }
-        if (typedArray.hasValue(R.styleable.RoundImageView_bottomRightRadius)) {
-            bottomRightRadius = typedArray.getDimension(R.styleable.RoundImageView_bottomRightRadius, bottomRightRadius)
-        }
-        if (typedArray.hasValue(R.styleable.RoundImageView_bottomLeftRadius)) {
-            bottomLeftRadius = typedArray.getDimension(R.styleable.RoundImageView_bottomLeftRadius, bottomLeftRadius)
-        }
+        val typedArray = context.obtainStyledAttributes(attributeSet, R.styleable.IrregularView)
+        foregroundOutline = typedArray.getString(R.styleable.IrregularView_foregroundOutline).withDefault(foregroundOutline)
+        foregroundPathData = typedArray.getString(R.styleable.IrregularView_foregroundPathData).withDefault(foregroundPathData)
         typedArray.recycle()
     }
 
     private fun setLayoutAndPaint() {
-        roundRectPaint.isAntiAlias = true
-        roundRectPaint.color = Color.BLACK
-        roundRectPaint.style = Paint.Style.FILL
-        borderPaint.isAntiAlias = true
-        borderPaint.color = borderColor
-        borderPaint.style = Paint.Style.STROKE
-        borderPaint.strokeWidth = borderWidth
+        foregroundOutlinePaint.isAntiAlias = true
+        foregroundBorderPaint.isAntiAlias = true
+        foregroundBorderPaint.style = Paint.Style.STROKE
         setLayerType(LAYER_TYPE_SOFTWARE, null)
     }
 
@@ -77,22 +53,16 @@ class IrregularView : View {
     }
 
     override fun onDraw(canvas: Canvas) {
-        canvas.clipPath(createRoundRectPath())
-        super.onDraw(canvas)
-//        roundRectPaint.setXfermode(PorterDuffXfermode(PorterDuff.Mode.SRC_IN))
-//        canvas.drawPath(createRoundRectPath(), roundRectPaint)
-//        roundRectPaint.setXfermode(null)
-//        if (showBorder)
-//            canvas.drawPath(createBorderPath(), borderPaint)
+        if (foregroundOutline == OutlineShape.Path) {
+            drawForegroundOutline(canvas)
+        }
     }
 
-    private fun createCornerRadius(): FloatArray {
-        return floatArrayOf(
-            topLeftRadius, topLeftRadius,
-            topRightRadius, topRightRadius,
-            bottomRightRadius, bottomRightRadius,
-            bottomLeftRadius, bottomLeftRadius
-        )
+    private fun drawForegroundOutline(canvas: Canvas) {
+        val path = PathParser.createPathFromPathData(foregroundPathData)
+        val pathBound = path.bound()
+        val scaleX = measuredWidth / pathBound.width()
+        val scaleY = measuredHeight / pathBound.height()
     }
 
     private fun createContentRect(): RectF {
@@ -102,23 +72,5 @@ class IrregularView : View {
             measuredWidth - paddingRight.toFloat(),
             measuredHeight - paddingBottom.toFloat()
         )
-    }
-
-    private fun createRoundRectPath(): Path {
-        val path = Path()
-        path.addRoundRect(
-            createContentRect(),
-            createCornerRadius(),
-            Path.Direction.CW
-        )
-        return path
-    }
-
-    private fun createBorderPath(): Path {
-        val rect = createContentRect()
-        rect.inset(borderWidth / 2, borderWidth / 2)
-        val path = Path()
-        path.addRoundRect(rect, createCornerRadius(), Path.Direction.CCW)
-        return path
     }
 }
