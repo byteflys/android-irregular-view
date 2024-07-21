@@ -1,6 +1,6 @@
 package com.android.library.irregularview.commons.kotlin
 
-internal object Maths {
+internal object MathEx {
 
     fun findInsertIndexAsc(list: List<Int>, value: Int): Int {
         for (i in list.size downTo 1) {

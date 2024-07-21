@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <attr name="foregroundOutline" format="enum">
-        <enum name="Path" value="Path" />
-        <enum name="RoundRect" value="RoundRect" />
+        <enum name="Path" value="1001" />
+        <enum name="RoundRect" value="1005" />
     </attr>
     <attr name="backgroundOutline" format="enum">
-        <enum name="Path" value="Path" />
-        <enum name="RoundRect" value="RoundRect" />
+        <enum name="Path" value="1001" />
+        <enum name="RoundRect" value="1005" />
     </attr>
+    <attr name="foreground" format="reference" />
     <attr name="foregroundPathData" format="string|reference" />
     <attr name="foregroundCornerRadius" format="fraction|reference" />
     <attr name="foregroundTopLeftRadius" format="fraction|reference" />
@@ -16,6 +17,7 @@
     <attr name="foregroundBottomLeftRadius" format="fraction|reference" />
     <attr name="foregroundBorderColor" format="color|reference" />
     <attr name="foregroundBorderWidth" format="dimension|reference" />
+    <attr name="background" format="reference" />
     <attr name="backgroundPathData" format="string|reference" />
     <attr name="backgroundCornerRadius" format="fraction|reference" />
     <attr name="backgroundTopLeftRadius" format="fraction|reference" />
@@ -25,6 +27,7 @@
     <attr name="backgroundBorderColor" format="color|reference" />
     <attr name="backgroundBorderWidth" format="dimension|reference" />
     <declare-styleable name="IrregularView">
+        <attr name="foreground" />
         <attr name="foregroundOutline" />
         <attr name="backgroundOutline" />
         <attr name="foregroundPathData" />
@@ -35,6 +38,7 @@
         <attr name="foregroundBottomLeftRadius" />
         <attr name="foregroundBorderColor" />
         <attr name="foregroundBorderWidth" />
+        <attr name="background" />
         <attr name="backgroundPathData" />
         <attr name="backgroundCornerRadius" />
         <attr name="backgroundTopLeftRadius" />

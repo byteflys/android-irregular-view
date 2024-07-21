@@ -3,7 +3,7 @@ package com.android.library.irregularview.commons.android
 import android.content.Context
 import android.view.View
 
-internal object Dimens {
+internal object DimenEx {
 
     fun Context.dp2Px(dp: Number): Float {
         val scale = resources.displayMetrics.density

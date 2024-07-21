@@ -1,6 +1,6 @@
 package com.android.library.irregularview.commons.kotlin
 
-object Strings {
+object StringEx {
 
     fun String?.withEmpty() = withDefault("")
 

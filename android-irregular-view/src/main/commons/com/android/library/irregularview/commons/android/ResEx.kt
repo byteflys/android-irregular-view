@@ -3,7 +3,7 @@ package com.android.library.irregularview.commons.android
 import android.content.Context
 import android.view.View
 
-internal object Res {
+internal object ResEx {
 
     fun Context.color(colorResId: Int) = resources.getColor(colorResId, null)
 

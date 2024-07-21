@@ -3,7 +3,7 @@ package com.android.library.irregularview.commons.android
 import android.graphics.Path
 import android.graphics.RectF
 
-internal object Paths {
+internal object PathEx {
 
     fun Path.bound(): RectF {
         val bound = RectF()

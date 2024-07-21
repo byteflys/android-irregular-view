@@ -12,6 +12,9 @@
         android:id="@+id/irregularView"
         android:layout_width="250dp"
         android:layout_height="200dp"
+        android:background="#22FF00FF"
+        android:padding="5dp"
+        app:foreground="@drawable/ic"
         app:foregroundOutline="Path"
-        app:foregroundPathData="M 0 0 L 100 0 L 100 80 T 0 80 Z" />
+        app:foregroundPathData="M 0 50 L 0 0 L 100 0 L 100 50 A 50 50 0 0 1 0 50 Z" />
 </LinearLayout>
