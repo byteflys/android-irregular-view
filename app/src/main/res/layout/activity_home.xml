@@ -9,7 +9,7 @@
     android:orientation="vertical">
 
     <com.android.library.irregularview.IrregularView
-        android:id="@+id/irregularView"
+        android:id="@+id/irregularView1"
         android:layout_width="250dp"
         android:layout_height="200dp"
         android:background="#22FF00FF"
@@ -17,4 +17,16 @@
         app:foreground="@drawable/ic"
         app:foregroundOutline="Path"
         app:foregroundPathData="M 0 50 L 0 0 L 100 0 L 100 50 A 50 50 0 0 1 0 50 Z" />
+
+    <com.android.library.irregularview.IrregularView
+        android:id="@+id/irregularView2"
+        android:layout_width="250dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="10dp"
+        android:background="#22FF00FF"
+        android:padding="5dp"
+        app:foreground="@drawable/ic"
+        app:foregroundBottomRightRadius="20%"
+        app:foregroundOutline="RoundRect"
+        app:foregroundTopLeftRadius="20%" />
 </LinearLayout>
