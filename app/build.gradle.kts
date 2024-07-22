@@ -32,7 +32,7 @@ android {
 
 dependencies {
 
-    api(project(":android-irregular-view"))
+    api("io.github.hellogoogle2000:android-irregular-view:1.0.1")
 
     // AndroidX
     api("androidx.appcompat:appcompat:1.7.0")
