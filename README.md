@@ -103,4 +103,4 @@ api("io.github.hellogoogle2000:android-irregular-view:1.0.1")
 
 # Preview
 
-<img src="https://github.com/user-attachments/assets/0a619512-7847-4d12-9edd-4e4440f097a0" height="250">
+<img src="https://github.com/user-attachments/assets/0a619512-7847-4d12-9edd-4e4440f097a0" height="500">
