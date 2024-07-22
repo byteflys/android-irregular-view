@@ -13,7 +13,9 @@
     <color name="black_percent_88">#E1000000</color>
     <color name="gray">#77787B</color>
     <color name="red">#FF0000</color>
+    <color name="red_percent_50">#80FF0000</color>
     <color name="red_warning">#F34545</color>
     <color name="green">#00FF00</color>
     <color name="blue">#0000FF</color>
+    <color name="blue_percent_50">#800000FF</color>
 </resources>
