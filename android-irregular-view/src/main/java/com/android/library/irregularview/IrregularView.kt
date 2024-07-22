@@ -3,15 +3,12 @@ package com.android.library.irregularview
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Color
-import android.graphics.Matrix
 import android.graphics.Paint
 import android.graphics.Path
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.view.View
 import androidx.core.graphics.PathParser
-import com.android.library.irregularview.commons.android.MatrixEx.scale
-import com.android.library.irregularview.commons.android.MatrixEx.translate
 import com.android.library.irregularview.commons.android.OutlineShape
 import com.android.library.irregularview.commons.android.PathEx.bound
 import com.android.library.irregularview.commons.android.PathEx.scale
@@ -20,7 +17,6 @@ import com.android.library.irregularview.commons.android.RectEx.toRect
 import com.android.library.irregularview.commons.android.ViewEx.createCornerRadius
 import com.android.library.irregularview.commons.android.ViewEx.getAvailableRectF
 import com.android.library.irregularview.commons.kotlin.StringEx.withDefault
-import com.android.library.roundimage.R
 
 // An android view that enable
 // clip foreground and background into irregular shape
