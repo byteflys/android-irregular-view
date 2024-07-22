@@ -39,6 +39,16 @@ class IrregularView : View {
     private val foregroundBorderPaint = Paint()
 
     private var background: Drawable? = null
+    private var backgroundOutline = OutlineShape.None
+    private var backgroundPathData = "M 0 0 L 100 0 L 100 100 L 0 100 Z"
+    private var backgroundCorner = 0f
+    private var backgroundCornerTL = 0f
+    private var backgroundCornerTR = 0f
+    private var backgroundCornerBL = 0f
+    private var backgroundCornerBR = 0f
+    private var backgroundBorderColor = Color.TRANSPARENT
+    private var backgroundBorderWidth = 0f
+    private val backgroundBorderPaint = Paint()
 
     constructor(context: Context) : this(context, null)
     constructor(context: Context, attributeSet: AttributeSet?) : this(context, attributeSet, 0)
@@ -60,6 +70,16 @@ class IrregularView : View {
         foregroundCornerBR = typedArray.getFraction(R.styleable.IrregularView_foregroundBottomRightRadius, 1, 1, foregroundCorner)
         foregroundBorderColor = typedArray.getColor(R.styleable.IrregularView_foregroundBorderColor, foregroundBorderColor)
         foregroundBorderWidth = typedArray.getDimension(R.styleable.IrregularView_foregroundBorderWidth, foregroundBorderWidth)
+        background = typedArray.getDrawable(R.styleable.IrregularView_background)
+        backgroundOutline = typedArray.getInt(R.styleable.IrregularView_backgroundOutline, backgroundOutline)
+        backgroundPathData = typedArray.getString(R.styleable.IrregularView_backgroundPathData).withDefault(backgroundPathData)
+        backgroundCorner = typedArray.getFraction(R.styleable.IrregularView_backgroundCornerRadius, 1, 1, 0f)
+        backgroundCornerTL = typedArray.getFraction(R.styleable.IrregularView_backgroundTopLeftRadius, 1, 1, backgroundCorner)
+        backgroundCornerTR = typedArray.getFraction(R.styleable.IrregularView_backgroundTopRightRadius, 1, 1, backgroundCorner)
+        backgroundCornerBL = typedArray.getFraction(R.styleable.IrregularView_backgroundBottomLeftRadius, 1, 1, backgroundCorner)
+        backgroundCornerBR = typedArray.getFraction(R.styleable.IrregularView_backgroundBottomRightRadius, 1, 1, backgroundCorner)
+        backgroundBorderColor = typedArray.getColor(R.styleable.IrregularView_backgroundBorderColor, backgroundBorderColor)
+        backgroundBorderWidth = typedArray.getDimension(R.styleable.IrregularView_backgroundBorderWidth, backgroundBorderWidth)
         typedArray.recycle()
     }
 
@@ -68,6 +88,10 @@ class IrregularView : View {
         foregroundBorderPaint.style = Paint.Style.STROKE
         foregroundBorderPaint.color = foregroundBorderColor
         foregroundBorderPaint.strokeWidth = foregroundBorderWidth * 2
+        backgroundBorderPaint.isAntiAlias = true
+        backgroundBorderPaint.style = Paint.Style.STROKE
+        backgroundBorderPaint.color = backgroundBorderColor
+        backgroundBorderPaint.strokeWidth = backgroundBorderWidth * 2
         setLayerType(LAYER_TYPE_SOFTWARE, null)
     }
 
@@ -77,6 +101,11 @@ class IrregularView : View {
     }
 
     override fun onDraw(canvas: Canvas) {
+        drawLayer(
+            canvas, background, backgroundBorderPaint,
+            backgroundOutline, backgroundPathData,
+            backgroundCornerTL, backgroundCornerTR, backgroundCornerBL, backgroundCornerBR
+        )
         drawLayer(
             canvas, foreground, foregroundBorderPaint,
             foregroundOutline, foregroundPathData,
